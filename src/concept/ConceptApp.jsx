@@ -30,10 +30,43 @@ function Tile({ src, label, onClick, className = '' }) {
   );
 }
 
+const loadCard = () => {
+  try { return JSON.parse(localStorage.getItem('concept.card')) || {}; } catch { return {}; }
+};
+
+function groups4(v) {
+  return v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
+}
+
+function CardEditor({ card, onSave, onClose }) {
+  const [number, setNumber] = useState(card.number || '');
+  const [holder, setHolder] = useState(card.holder || '');
+  return (
+    <Sheet title="Моя карта ATTO" onClose={onClose}>
+      <label className="field"><span>Номер карты</span>
+        <input inputMode="numeric" value={number} placeholder="0000 0000 0000 0000"
+          onChange={(e) => setNumber(groups4(e.target.value))} autoFocus />
+      </label>
+      <label className="field"><span>Имя (необязательно)</span>
+        <input value={holder} maxLength={30} onChange={(e) => setHolder(e.target.value)} />
+      </label>
+      <p className="note">Это ваша собственная карта. Приложение только показывает её номер — баланс и поездки не подключены.</p>
+      <button className="btn" onClick={() => onSave({ number: number.trim(), holder: holder.trim() })}>Сохранить</button>
+    </Sheet>
+  );
+}
+
 export default function ConceptApp() {
   const [page, setPage] = useState('home');
   const [info, setInfo] = useState(null);
+  const [card, setCard] = useState(loadCard);
+  const [editCard, setEditCard] = useState(false);
   const soon = (title) => () => setInfo(title);
+  const saveCard = (c) => {
+    setCard(c);
+    try { localStorage.setItem('concept.card', JSON.stringify(c)); } catch { /* ignore */ }
+    setEditCard(false);
+  };
 
   return (
     <div className="phone">
@@ -78,7 +111,14 @@ export default function ConceptApp() {
             <div className="title">Транспорт</div><span className="spacer" />
           </header>
           <div className="screen">
-            <VirtualCard />
+            <VirtualCard
+              holder={card.holder || 'Моя карта'}
+              number={card.number || '•••• •••• •••• ••••'}
+              onEdit={() => setEditCard(true)}
+            />
+            <p className="note" style={{ textAlign: 'center', marginTop: 10 }}>
+              Баланс и поездки появятся после подключения к ATTO
+            </p>
             <div className="dots"><i className="on" /><i /></div>
             <div className="grid2">
               <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Icon name="face" size={30} /></button>
@@ -143,6 +183,8 @@ export default function ConceptApp() {
           <button className="btn" onClick={() => setInfo(null)}>Понятно</button>
         </Sheet>
       )}
+
+      {editCard && <CardEditor card={card} onSave={saveCard} onClose={() => setEditCard(false)} />}
     </div>
   );
 }

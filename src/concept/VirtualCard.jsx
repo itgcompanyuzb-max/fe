@@ -1,5 +1,6 @@
 // Yangi dizayndagi virtual karta: ko'kdan yashilga gradient, shisha to'lqinlar.
-export default function VirtualCard({ balance = '19 000', holder = 'aau', number = '9987 0000 0000 0000' }) {
+// Balans ATTO serveridan kelmaydi (bizda API yo'q), shuning uchun "—" ko'rsatiladi.
+export default function VirtualCard({ balance = '—', holder = 'aau', number = '0000 0000 0000 0000', onEdit }) {
   return (
     <div className="vcard">
       <svg className="vcard-waves" viewBox="0 0 340 170" preserveAspectRatio="none" aria-hidden="true">
@@ -22,6 +23,7 @@ export default function VirtualCard({ balance = '19 000', holder = 'aau', number
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="#2ee86a" /></svg>
         {number}
       </div>
+      {onEdit && <button className="vcard-edit" onClick={onEdit} aria-label="Изменить карту">✎</button>}
     </div>
   );
 }

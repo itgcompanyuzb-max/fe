@@ -225,3 +225,4 @@ code { background: var(--surface-2); padding: 2px 6px; border-radius: 6px; font-
 .vcard-brand { position: absolute; left: 24px; bottom: 20px; font-weight: 800; font-size: 18px; line-height: 1; }
 .vcard-brand small { display: block; color: #2ee86a; font-size: 12px; font-weight: 700; letter-spacing: .5px; margin-top: 3px; }
 .vcard-num { position: absolute; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; white-space: nowrap; text-shadow: 0 1px 6px rgba(0, 40, 80, .35); }
+.vcard-edit { position: absolute; right: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.25); color: #fff; font-size: 15px; display: grid; place-items: center; }
