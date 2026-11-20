@@ -219,9 +219,9 @@ code { background: var(--surface-2); padding: 2px 6px; border-radius: 6px; font-
 .vcard::after { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
   background: radial-gradient(120% 90% at 0% 100%, rgba(0, 10, 120, .45), transparent 60%); }
 .vcard-waves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
-.vcard-bal { position: absolute; left: 24px; top: 26px; font-size: 44px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
-.vcard-bal small { font-size: 18px; font-weight: 700; margin-left: 8px; letter-spacing: .5px; }
-.vcard-holder { position: absolute; left: 25px; top: 80px; font-size: 18px; opacity: .85; }
-.vcard-brand { position: absolute; left: 24px; bottom: 20px; font-weight: 800; font-size: 24px; line-height: 1; }
-.vcard-brand small { display: block; color: #2ee86a; font-size: 16px; font-weight: 800; margin-top: 3px; }
+.vcard-bal { position: absolute; left: 24px; top: 26px; font-size: 34px; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+.vcard-bal small { font-size: 14px; font-weight: 700; margin-left: 8px; letter-spacing: .5px; }
+.vcard-holder { position: absolute; left: 25px; top: 70px; font-size: 15px; opacity: .85; }
+.vcard-brand { position: absolute; left: 24px; bottom: 20px; font-weight: 800; font-size: 18px; line-height: 1; }
+.vcard-brand small { display: block; color: #2ee86a; font-size: 12px; font-weight: 700; letter-spacing: .5px; margin-top: 3px; }
 .vcard-num { position: absolute; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; white-space: nowrap; text-shadow: 0 1px 6px rgba(0, 40, 80, .35); }
