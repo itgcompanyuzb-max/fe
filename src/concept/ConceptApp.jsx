@@ -113,7 +113,7 @@ export default function ConceptApp() {
       {page === 'transport' && (
         <>
           <header className="topbar">
-            <button className="round-btn" onClick={() => setPage('home')} aria-label="Назад"><Ic name="back" size={22} /></button>
+            <button className="round-btn" onClick={() => setPage('home')} aria-label="Назад"><Ic name="back" size={26} /></button>
             <div className="title">Транспорт</div><span className="spacer" />
           </header>
           <div className="screen">
@@ -127,13 +127,13 @@ export default function ConceptApp() {
             </p>
             <div className="dots"><i className="on" /><i /></div>
             <div className="grid2">
-              <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Ic name="facepay" size={32} /></button>
-              <button className="pill-btn" onClick={soon('PalmPay')}><span><small>Включить</small>PalmPay</span><Ic name="palmpay" size={32} /></button>
-              <button className="action violet" onClick={soon('Пополнение карты')}><Ic name="plus" size={38} />Пополнить карту</button>
-              <button className="action green" onClick={soon('Покупка тарифа')}><Ic name="ticket" size={38} />Купить тариф</button>
+              <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Ic name="facepay" size={46} /></button>
+              <button className="pill-btn" onClick={soon('PalmPay')}><span><small>Включить</small>PalmPay</span><Ic name="palmpay" size={46} /></button>
+              <button className="action violet" onClick={soon('Пополнение карты')}><Ic name="plus" size={52} />Пополнить карту</button>
+              <button className="action green" onClick={soon('Покупка тарифа')}><Ic name="ticket" size={52} />Купить тариф</button>
             </div>
             <button className="wide-action" onClick={soon('QR Оплата')}>
-              <Ic name="qr" size={36} />
+              <Ic name="qr" size={48} />
               <div style={{ marginTop: 14 }}>QR Оплата<small>автобус, метро</small></div>
             </button>
           </div>
@@ -164,7 +164,7 @@ export default function ConceptApp() {
         <nav className="tabbar">
           {TABS.map((t) => (
             <button key={t.id} className={`tab ${page === t.id ? 'on' : ''}`} onClick={() => setPage(t.id)}>
-              <Ic name={t.icon === 'history' ? 'chart' : t.icon} size={26} className="tabic" />{t.label}
+              <Ic name={t.icon === 'history' ? 'chart' : t.icon} size={32} className="tabic" />{t.label}
             </button>
           ))}
         </nav>
