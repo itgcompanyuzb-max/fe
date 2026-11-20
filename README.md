@@ -53,3 +53,9 @@ src/ui/       Yagona ikonkalar (icons.jsx), illyustratsiyalar (art.jsx), umumiy 
 ```
 
 Brend nomi va logotip `src/ui/common.jsx` (`Logo`) va `public/logo.svg` da — bitta joyda almashtiriladi.
+
+## ATTO uchun konsept-prototip (`/concept`)
+
+Taqdimot uchun faqat ko'rinish: bosh sahifa, Transport, Menyu va AI yordamchi namunasi.
+To'lov, QR to'lov, kartani to'ldirish va to'langan safarlar tarixi ataylab yo'q: ular ATTO tizimiga ulanganda ishlaydi.
+Rasmlar (`public/concept/`) loyiha egasi tomonidan berilgan; ulardan foydalanish huquqi uchun loyiha egasi javobgar.

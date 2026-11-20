@@ -3,5 +3,8 @@ import './styles.css';
 import MobileApp from './app/MobileApp.jsx';
 import AdminApp from './admin/AdminApp.jsx';
 
-const isAdmin = location.pathname.startsWith('/admin');
-createRoot(document.getElementById('root')).render(isAdmin ? <AdminApp /> : <MobileApp />);
+import ConceptApp from './concept/ConceptApp.jsx';
+
+const path = location.pathname;
+const App = path.startsWith('/admin') ? AdminApp : path.startsWith('/concept') ? ConceptApp : MobileApp;
+createRoot(document.getElementById('root')).render(<App />);
