@@ -1,7 +1,8 @@
-// ATTO uchun taqdimot prototipi (konsept). Faqat ko'rinish: to'lov, QR to'lov,
+// ATTO uchun taqdimot prototipi. Faqat ko'rinish: to'lov, QR to'lov,
 // to'ldirish va to'langan safarlar tarixi ATAYLAB yo'q — ular ATTO tizimiga ulanganda ishlaydi.
 import { useState } from 'react';
 import { Icon } from '../ui/icons.jsx';
+import { NavIcon } from '../ui/navicons.jsx';
 import { Sheet } from '../ui/common.jsx';
 
 const img = (n) => `/concept/${n}.png`;
@@ -16,8 +17,6 @@ const TABS = [
 function AttoLogo() {
   return <div className="logo" style={{ fontSize: 34 }}>ATT<b style={{ fontSize: '1.05em' }}>O</b></div>;
 }
-
-const ConceptBadge = () => <span className="demo-badge" style={{ background: '#a5b4fc' }}>КОНЦЕПТ</span>;
 
 function Tile({ src, label, onClick, className = '' }) {
   return (
@@ -41,8 +40,8 @@ export default function ConceptApp() {
         <>
           <header className="topbar">
             <button onClick={() => setPage('menu')} aria-label="Меню"><Icon name="menu" size={32} /></button>
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center' }}><AttoLogo /><ConceptBadge /></div>
-            <button onClick={() => setPage('ai')} aria-label="AI"><Icon name="chat" size={32} /></button>
+            <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}><AttoLogo /></div>
+            <button onClick={soon('Поддержка')} aria-label="Поддержка"><Icon name="chat" size={32} /></button>
           </header>
           <div className="screen">
             <div className="panel">
@@ -58,8 +57,8 @@ export default function ConceptApp() {
                 <Tile src="cinema_ticket_popcorn" label="Билеты в кино" onClick={soon('Билеты в кино')} />
                 <Tile src="tv_movies" label="Кино и ТВ" onClick={soon('Кино и ТВ')} />
               </div>
-              <button className="wide-tile" onClick={() => setPage('ai')}>
-                AI ассистент <span style={{ color: 'var(--accent)', paddingRight: 24 }}><Icon name="sparkle" size={40} /></span>
+              <button onClick={soon('QR оплата')} style={{ display: 'block', width: '100%', marginTop: 22 }}>
+                <img src={img('qr_payment_banner')} alt="QR оплата" style={{ width: '100%', display: 'block', borderRadius: 'var(--radius)' }} />
               </button>
               <div className="hscroll">
                 <Tile src="parking" label="Парковки" onClick={soon('Парковки')} />
@@ -79,7 +78,6 @@ export default function ConceptApp() {
           </header>
           <div className="screen">
             <div className="tcard">
-              <ConceptBadge />
               <div className="bal" style={{ fontSize: 30, marginTop: 8 }}>Баланс карты</div>
               <div className="holder">появится после подключения к ATTO</div>
               <div className="brand">ATTO<small>VIRTUAL</small></div>
@@ -92,9 +90,9 @@ export default function ConceptApp() {
               <button className="action violet" onClick={soon('Пополнение карты')}><span className="ic"><Icon name="plus" size={22} strokeWidth={3} /></span>Пополнить карту</button>
               <button className="action green" onClick={soon('Покупка тарифа')}><span className="ic"><Icon name="ticket" size={22} /></span>Купить тариф</button>
             </div>
-            <button className="wide-action" onClick={() => setPage('ai')}>
-              <span style={{ color: 'var(--accent)' }}><Icon name="sparkle" size={36} /></span>
-              <div style={{ marginTop: 14 }}>AI подбор тарифа<small>новое: персональная рекомендация</small></div>
+            <button className="wide-action" onClick={soon('QR Оплата')}>
+              <Icon name="qr" size={36} />
+              <div style={{ marginTop: 14 }}>QR Оплата<small>автобус, метро</small></div>
             </button>
           </div>
         </>
@@ -104,13 +102,12 @@ export default function ConceptApp() {
         <>
           <div className="hist-head">
             <h1>История</h1>
-            <button className="grad-btn" onClick={() => setPage('ai')}>Аналитика <Icon name="sparkle" size={22} /></button>
+            <button className="grad-btn" onClick={soon('Аналитика')}>Аналитика <Icon name="sparkle" size={22} /></button>
           </div>
           <div className="screen">
             <div className="empty">
               <img src={img('transport_bus')} alt="" style={{ width: 120, borderRadius: 22, marginBottom: 12 }} />
               <div>Операции появятся после подключения к ATTO.</div>
-              <p className="note">Новое в концепте: группировка по дням, фильтры, экспорт и AI-аналитика расходов.</p>
             </div>
           </div>
         </>
@@ -130,36 +127,15 @@ export default function ConceptApp() {
                 <img src={img(src)} alt="" style={{ width: 34, height: 34 }} />{label}
               </button>
             ))}
-            <button className="menu-card" onClick={() => setPage('ai')}>
-              <span className="ic" style={{ background: 'var(--accent)' }}><Icon name="sparkle" size={22} /></span>AI ассистент
-            </button>
           </div>
         </div>
-      )}
-
-      {page === 'ai' && (
-        <>
-          <header className="topbar">
-            <button className="round-btn" onClick={() => setPage('home')} aria-label="Назад"><Icon name="back" /></button>
-            <div className="title">AI ассистент</div><span className="spacer" />
-          </header>
-          <div className="screen">
-            <div className="chat">
-              <div className="msg user">Как доехать от Чиланзара до Юнусабада?</div>
-              <div className="msg assistant">Быстрее всего на метро: Чиланзарская линия до «Амира Темура хиёбони», пересадка на Юнусабадскую линию. Около 35 минут. (пример ответа)</div>
-              <div className="msg user">Какой тариф мне выгоднее?</div>
-              <div className="msg assistant">Вы ездите примерно 2 раза в день по будням. Месячный тариф выйдет дешевле, чем разовые поездки. (пример ответа)</div>
-            </div>
-            <p className="note" style={{ marginTop: 24 }}>Концепт: ассистент видит историю поездок пользователя и отвечает на узбекском и русском.</p>
-          </div>
-        </>
       )}
 
       {TABS.some((t) => t.id === page) && (
         <nav className="tabbar">
           {TABS.map((t) => (
             <button key={t.id} className={`tab ${page === t.id ? 'on' : ''}`} onClick={() => setPage(t.id)}>
-              <Icon name={t.icon} size={28} />{t.label}
+              <NavIcon name={t.icon} />{t.label}
             </button>
           ))}
         </nav>
@@ -167,7 +143,7 @@ export default function ConceptApp() {
 
       {info && (
         <Sheet title={info} onClose={() => setInfo(null)}>
-          <p className="note">Это концепт-прототип. Функция заработает после подключения к платёжной системе ATTO.</p>
+          <p className="note">Функция будет доступна после подключения к платёжной системе ATTO.</p>
           <button className="btn" onClick={() => setInfo(null)}>Понятно</button>
         </Sheet>
       )}

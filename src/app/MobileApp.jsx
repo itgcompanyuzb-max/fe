@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api, session } from '../api.js';
 import { Icon } from '../ui/icons.jsx';
+import { NavIcon } from '../ui/navicons.jsx';
 import Login from './Login.jsx';
 import Home from './Home.jsx';
 import Transport from './Transport.jsx';
@@ -63,7 +64,7 @@ export default function MobileApp() {
         <nav className="tabbar">
           {TABS.map((t) => (
             <button key={t.id} className={`tab ${page === t.id ? 'on' : ''}`} onClick={() => tab(t.id)}>
-              <Icon name={t.icon} size={28} />
+              <NavIcon name={t.icon} />
               {t.label}
             </button>
           ))}
