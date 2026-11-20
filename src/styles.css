@@ -230,3 +230,4 @@ code { background: var(--surface-2); padding: 2px 6px; border-radius: 6px; font-
 .tab .tabic { opacity: .45; filter: grayscale(1) brightness(1.4); transition: opacity .15s; }
 .tab.on .tabic { opacity: 1; filter: none; }
 .action .tabic, .action img { margin-bottom: auto; }
+.tab .tabic { width: 30px; height: 30px; }
