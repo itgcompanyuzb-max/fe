@@ -5,6 +5,7 @@ import { Icon } from '../ui/icons.jsx';
 import { NavIcon } from '../ui/navicons.jsx';
 import { Sheet } from '../ui/common.jsx';
 import VirtualCard from './VirtualCard.jsx';
+import Expenses from './Expenses.jsx';
 
 const img = (n) => `/concept/${n}.png`;
 
@@ -139,20 +140,7 @@ export default function ConceptApp() {
         </>
       )}
 
-      {page === 'history' && (
-        <>
-          <div className="hist-head">
-            <h1>История</h1>
-            <button className="grad-btn" onClick={soon('Аналитика')}>Аналитика <Icon name="sparkle" size={22} /></button>
-          </div>
-          <div className="screen">
-            <div className="empty">
-              <img src={img('transport_bus')} alt="" style={{ width: 120, borderRadius: 22, marginBottom: 12 }} />
-              <div>Операции появятся после подключения к ATTO.</div>
-            </div>
-          </div>
-        </>
-      )}
+      {page === 'history' && <Expenses />}
 
       {page === 'menu' && (
         <div className="screen">
