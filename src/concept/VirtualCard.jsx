@@ -20,7 +20,7 @@ export default function VirtualCard({ balance = '—', holder = 'aau', number = 
       <div className="vcard-holder">{holder}</div>
       <div className="vcard-brand">ATTO<small>VIRTUAL</small></div>
       <div className="vcard-num">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9z" fill="#2ee86a" /></svg>
+        <img src="/concept/ic/star.png" alt="" width="22" height="22" />
         {number}
       </div>
       {onEdit && <button className="vcard-edit" onClick={onEdit} aria-label="Изменить карту">✎</button>}

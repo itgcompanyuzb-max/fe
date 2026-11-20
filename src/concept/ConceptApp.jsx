@@ -8,6 +8,11 @@ import VirtualCard from './VirtualCard.jsx';
 
 const img = (n) => `/concept/${n}.png`;
 
+// Foydalanuvchi bergan ikonlar to'plami (public/concept/ic/)
+function Ic({ name, size = 28, className = '' }) {
+  return <img src={`/concept/ic/${name}.png`} alt="" width={size} height={size} className={className} style={{ objectFit: 'contain' }} />;
+}
+
 const TABS = [
   { id: 'home', label: 'Главная', icon: 'home' },
   { id: 'history', label: 'История', icon: 'history' },
@@ -107,7 +112,7 @@ export default function ConceptApp() {
       {page === 'transport' && (
         <>
           <header className="topbar">
-            <button className="round-btn" onClick={() => setPage('home')} aria-label="Назад"><Icon name="back" /></button>
+            <button className="round-btn" onClick={() => setPage('home')} aria-label="Назад"><Ic name="back" size={22} /></button>
             <div className="title">Транспорт</div><span className="spacer" />
           </header>
           <div className="screen">
@@ -121,13 +126,13 @@ export default function ConceptApp() {
             </p>
             <div className="dots"><i className="on" /><i /></div>
             <div className="grid2">
-              <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Icon name="face" size={30} /></button>
-              <button className="pill-btn" onClick={soon('PalmPay')}><span><small>Включить</small>PalmPay</span><Icon name="palm" size={30} /></button>
-              <button className="action violet" onClick={soon('Пополнение карты')}><span className="ic"><Icon name="plus" size={22} strokeWidth={3} /></span>Пополнить карту</button>
-              <button className="action green" onClick={soon('Покупка тарифа')}><span className="ic"><Icon name="ticket" size={22} /></span>Купить тариф</button>
+              <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Ic name="facepay" size={32} /></button>
+              <button className="pill-btn" onClick={soon('PalmPay')}><span><small>Включить</small>PalmPay</span><Ic name="palmpay" size={32} /></button>
+              <button className="action violet" onClick={soon('Пополнение карты')}><Ic name="plus" size={38} />Пополнить карту</button>
+              <button className="action green" onClick={soon('Покупка тарифа')}><Ic name="ticket" size={38} />Купить тариф</button>
             </div>
             <button className="wide-action" onClick={soon('QR Оплата')}>
-              <Icon name="qr" size={36} />
+              <Ic name="qr" size={36} />
               <div style={{ marginTop: 14 }}>QR Оплата<small>автобус, метро</small></div>
             </button>
           </div>
@@ -171,7 +176,7 @@ export default function ConceptApp() {
         <nav className="tabbar">
           {TABS.map((t) => (
             <button key={t.id} className={`tab ${page === t.id ? 'on' : ''}`} onClick={() => setPage(t.id)}>
-              <NavIcon name={t.icon} />{t.label}
+              <Ic name={t.icon === 'history' ? 'chart' : t.icon} size={26} className="tabic" />{t.label}
             </button>
           ))}
         </nav>
