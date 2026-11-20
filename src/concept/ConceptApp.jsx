@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Icon } from '../ui/icons.jsx';
 import { NavIcon } from '../ui/navicons.jsx';
 import { Sheet } from '../ui/common.jsx';
+import VirtualCard from './VirtualCard.jsx';
 
 const img = (n) => `/concept/${n}.png`;
 
@@ -77,12 +78,7 @@ export default function ConceptApp() {
             <div className="title">Транспорт</div><span className="spacer" />
           </header>
           <div className="screen">
-            <div className="tcard">
-              <div className="bal" style={{ fontSize: 30, marginTop: 8 }}>Баланс карты</div>
-              <div className="holder">появится после подключения к ATTO</div>
-              <div className="brand">ATTO<small>VIRTUAL</small></div>
-              <div className="num"><Icon name="star" size={20} />•••• ••••</div>
-            </div>
+            <VirtualCard />
             <div className="dots"><i className="on" /><i /></div>
             <div className="grid2">
               <button className="pill-btn" onClick={soon('FacePay')}><span><small>Включить</small>FacePay</span><Icon name="face" size={30} /></button>
