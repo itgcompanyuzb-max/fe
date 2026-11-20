@@ -23,7 +23,7 @@ input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- Mobil qobiq ---------- */
 .phone { max-width: 480px; margin: 0 auto; min-height: 100%; position: relative; display: flex; flex-direction: column; background: var(--bg); }
-.screen { flex: 1; padding: 12px 20px 110px; overflow-x: hidden; }
+.screen { flex: 1; padding: 12px 20px 100px; overflow-x: hidden; }
 .screen.no-nav { padding-bottom: 32px; }
 .topbar { display: flex; align-items: center; gap: 14px; padding: 14px 20px 10px; position: sticky; top: 0; background: var(--bg); z-index: 5; }
 .topbar .title { flex: 1; text-align: center; font-size: 26px; font-weight: 700; }
@@ -51,12 +51,13 @@ input, select, textarea { font: inherit; color: inherit; }
 .hscroll::-webkit-scrollbar { display: none; }
 
 /* Pastki navigatsiya */
-.tabbar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; display: grid; grid-template-columns: repeat(4, 1fr); background: #1e2a33; padding: 14px 0 calc(10px + env(safe-area-inset-bottom)); z-index: 10; }
-.tab { display: flex; flex-direction: column; align-items: center; gap: 6px; color: #6b7a86; font-size: 13px; font-weight: 500; letter-spacing: .2px; position: relative; }
+.tabbar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; display: grid; grid-template-columns: repeat(4, 1fr); background: #222f39; padding: 12px 0 calc(14px + env(safe-area-inset-bottom)); z-index: 10; }
+.tab { display: flex; flex-direction: column; align-items: center; color: #7a8691; font-size: 11px; font-weight: 500; letter-spacing: .3px; position: relative; }
+.tab svg { width: 24px; height: 24px; margin-bottom: 5px; }
 .tab.on { color: #fff; }
-.tab::before { content: ''; position: absolute; top: -14px; width: 48px; height: 3px; border-radius: 0 0 3px 3px; background: transparent; }
+.tab::before { content: ''; position: absolute; top: -12px; left: 50%; width: 36px; height: 3px; margin-left: -18px; border-radius: 0 0 2px 2px; background: transparent; }
 .tab.on::before { background: #fff; }
-.tab::after { content: ''; width: 6px; height: 6px; border-radius: 50%; margin-top: 2px; background: transparent; }
+.tab::after { content: ''; width: 5px; height: 5px; border-radius: 50%; margin-top: 10px; background: transparent; }
 .tab.on::after { background: var(--accent); }
 
 /* Menyu */
